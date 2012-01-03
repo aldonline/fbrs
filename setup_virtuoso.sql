@@ -15,6 +15,7 @@ create procedure fbrs_reload_graph( in path_to_ttl varchar, in graph_uri varchar
   ttlp_mt_local_file( path_to_ttl, 'https://graph.facebook.com/', graph_uri );
   
   -- clean dirty IDs
+  -- see: https://github.com/aldonline/fbrs/issues/5
   declare uri varchar ;
   uri := 'https://graph.facebook.com/#' ;
   declare q varchar;
