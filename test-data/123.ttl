@@ -1,0 +1,28 @@
+@prefix user:  <http://graph.facebook.com/schema/user#> .
+@prefix page:  <http://graph.facebook.com/schema/page#> .
+@prefix fbrs: <http://data.divetouch.com/fbrs#> .
+
+</123#>
+	user:id "123" ;
+	user:name "Diego Torres Garcia" ;
+	user:first_name "Diego" ;
+	user:last_name "Garcia" ;
+	user:link <http://www.facebook.com/profile.php?id=123> ;
+	user:birthday "04/20/1990" 
+.
+
+</888#>
+  page:id "888" ;
+  page:name "Peru"
+  .
+
+</888#>
+  page:id "999" ;
+  page:name "Passapoga"
+  .
+
+</888#>
+  page:id "666" ;
+  page:name "Hell"
+  .
+

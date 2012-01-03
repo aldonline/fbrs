@@ -1,0 +1,120 @@
+
+
+-- queues document for fetching
+
+sparql
+insert into fbrs:registry
+{
+    `iri( bif:concat( "https://graph.facebook.com/", ?id) )` a fbrs:Document ;
+      fbrs:id ?id ;
+      fbrs:state 0 ;
+      fbrs:priority 5
+      . 
+}
+where {
+  {
+    select
+      distinct
+        ?id
+    where {
+      ?x ?p ?id
+      { ?s page:id ?id } union { ?s user:id ?id }
+      filter not exists { [] fbrs:id ?id }
+    }
+  }
+}
+;
+
+
+
+
+
+-- dequeues document
+
+sparql
+
+select
+  distinct ?doc 
+from fbrs:registry
+where {
+  ?doc
+    a fbrs:Document ;
+    fbrs:state 0
+  .
+  optional {
+   ?doc
+    fbrs:priority ?priority ;
+    fbrs:etag ?etag
+  }
+  .
+} order by asc(?priority)
+
+;
+
+
+
+
+
+
+
+
+
+
+
+
+
+sparql
+select * 
+from <https://graph.facebook.com/1234>
+where {
+    ?s ?p ?o
+}
+;
+
+
+sparql
+select
+  distinct ?id
+where {
+  ?x ?p ?id
+  { ?s page:id ?id } union { ?s user:id ?id }
+  filter not exists { [] fbrs:id ?id }
+}
+;
+
+
+
+
+
+sparql
+select 
+ distinct ?p
+from <https://graph.facebook.com/563058849/friends> where 
+{ 
+  ?s ?p ?o
+}
+;
+
+
+
+sparql
+select * from fbrs:registry where { ?s ?p ?o }
+;
+
+
+sparql
+
+select *
+
+where {
+  {
+    select
+      distinct ?id
+    where {
+      ?x ?p ?id
+      { ?s page:id ?id } union { ?s user:id ?id }
+    }
+  }
+}
+
+;

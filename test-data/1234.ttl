@@ -1,0 +1,8 @@
+@prefix user:  <http://graph.facebook.com/schema/user#> .
+@prefix page:  <http://graph.facebook.com/schema/page#> .
+@prefix fbrs: <http://data.divetouch.com/fbrs#> .
+
+</1234#>
+	page:id "1234" ;
+	page:name "Some Page"
+.

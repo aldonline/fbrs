@@ -1,0 +1,25 @@
+@prefix : <http://data.divetouch.com/fbrs#> .
+
+
+:Document
+  a owl:Class
+  rdfs:label "Document"
+.
+
+:ObjectDocument
+  a owl:Class
+.
+
+:RelationDocument
+  a owl:Class
+.
+
+:registry
+  rdfs:label "Registry Graph"
+.
+
+:id
+  rdfs:comment "The ID is the localname, or URL path, of the document in the Facebook namespace. For example '3424324' or '31243243/friends'" 
+.
+
+

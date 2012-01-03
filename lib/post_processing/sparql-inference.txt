@@ -1,0 +1,83 @@
+sparql
+
+select * from <urn:divetouch:graph:facebook:friends> 
+where { 
+  ?s ?p ?o
+}
+;
+
+-- create image URLs for all facebook graph objects
+
+
+sparql
+select
+  ?ms
+from <urn:divetouch:graph:facebook:friends>
+where
+{ 
+    ?s ?p ?o .
+    BIND( SUBSTR( ?s, 10 ) as ?ms )
+} limit 10
+;
+
+
+
+sparql
+prefix user: <http://graph.facebook.com/schema/user#>
+prefix page: <http://graph.facebook.com/schema/page#>
+prefix : <http://graph.facebook.com/schema/~/>
+prefix fbx: <http://divetouch.com/fbx#>
+select distinct
+  ?s
+  ?id
+where {
+  { ?s user:id ?id } union { ?s page:id ?id }
+}
+;
+
+
+
+-- https://graph.facebook.com/aldo.bucchi/picture
+square (50x50)
+small (50 pixels wide, variable height)
+normal (100 pixels wide, variable height)
+large (about 200 pixels wide, variable height): http://graph.facebook.com/aldo.bucchi/picture?type=large.
+
+
+
+
+
+select
+  ?ms
+where
+{ 
+    ?s ?p ?o .
+    BIND( SUBSTR( ?s, 10 ) as ?ms )
+} limit 10
+
+
+select
+  ?s
+  ?len
+  ?sub
+where
+{ 
+    ?s ?p ?o .
+    filter( regex( str(?s), "^http://graph.facebook.com/[0-9]+#" ) )
+    bind( strlen( str(?s) ) as ?len )
+    bind( substr( str(?s), 20, ?len - 1 - 20 ) as ?sub )
+} limit 10
+
+
+select
+  ?s
+  ?this_len
+  ?sub
+where
+{ 
+    ?s ?p ?o .
+    filter( regex( str(?s), "^http://graph.facebook.com/[0-9]+#" ) )
+    bind( strlen( str(?s) ) as ?this_len )
+    bind( strlen("http://graph.facebook.com/") as ?base_len )
+    bind( substr( str(?s), ?base_len, (?this_len - ?base_len - 1) ) as ?sub )
+} limit 10

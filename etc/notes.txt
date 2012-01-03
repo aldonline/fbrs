@@ -1,0 +1,30 @@
+Some ideas on the API
+
+
+Methods:
+
+fetch 'aldo.bucchi'
+
+Makes sure that all direct data for Aldo Bucchi is loaded
+
+fetch 'aldo.bucchi/friends'
+
+Makes sure that all direct data for Aldo Bucchi is loaded, plus the friends relationship
+
+fetch 'aldo.bucchi/friends/*'
+
+Makes sure all the ids 
+
+
+fetch [aldo.bucchi] [relations] 
+
+
+nodes --> connection --> node
+
+
+GET aldo.bucchi -->
+  aldo's properties
+  related nodes ( some IDs )
+
+
+GET aldo.bucchi/[friends, ...] --> 

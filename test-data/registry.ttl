@@ -1,0 +1,12 @@
+
+</123>
+  a fbrs:Document ;
+  fbrs:id "123" ;
+  fbrs:state 2
+.
+
+</1234>
+  a fbrs:Document ;
+  fbrs:id "1234" ;
+  fbrs:state 2
+.

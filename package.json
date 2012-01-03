@@ -1,0 +1,23 @@
+{ "name": "facebook-rdf-sync"
+ , "description":  "facebook-rdf-sync"
+ , "version":  "0.0.1"
+ , "author": "Aldo Bucchi <aldo.bucchi@gmail.com>"
+ , "engines": { "node": "0.6.x" }
+ , "private": true
+ ,"dependencies": {
+   "coffee-script": "1.2.x"
+   ,"express": "2.5.x"
+   ,"markdown": "0.3.x"
+   ,"request": "1.9.x"
+   ,"sparql": "0.0.1"
+   ,"everyauth": "0.2.x"
+   ,"oauth": "0.9.x"
+   ,"should": "0.3.2"
+   ,"mkdirp": "0.2.x"
+   ,"virtuoso-isql-wrapper": "0.0.2"
+ }
+ , "scripts" : { 
+     "start" : "coffee lib/server.coffee",
+     "batch" : "coffee lib/batch/batch.coffee"
+     }
+}

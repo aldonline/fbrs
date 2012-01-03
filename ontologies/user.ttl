@@ -1,0 +1,393 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix api: <tag:graph.facebook.com,2011:/> .
+@prefix og: <http://ogp.me/ns#> .
+@prefix fb: <http://ogp.me/ns/fb#> .
+@prefix : <http://graph.facebook.com/schema/~/> .
+@prefix user: <http://graph.facebook.com/schema/user#> .
+user:type a rdfs:Class ;
+	rdfs:label "user" .
+user:id a owl:DatatypeProperty ;
+	a owl:InverseFunctionalProperty ;
+	rdfs:label "id" ;
+	rdfs:comment "The user's Facebook ID. No `access_token` required. `string`." ;
+	rdfs:domain user:type ;
+	rdfs:range xsd:string ;
+	rdfs:subPropertyOf :id .
+user:third_party_id a rdf:Property ;
+	rdfs:label "third_party_id" ;
+	rdfs:comment "An anonymous, but unique identifier for the user; only returned if specifically requested via the `fields` URL parameter. Requires `access_token`. `string`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :third_party_id .
+user:name a rdf:Property ;
+	rdfs:label "name" ;
+	rdfs:comment "The user's full name. No `access_token` required. `string`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :name .
+user:first_name a rdf:Property ;
+	rdfs:label "first_name" ;
+	rdfs:comment "The user's first name. No `access_token` required. `string`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :first_name .
+user:middle_name a rdf:Property ;
+	rdfs:label "middle_name" ;
+	rdfs:comment "The user's middle name. No `access_token` required.  `string`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :middle_name .
+user:last_name a rdf:Property ;
+	rdfs:label "last_name" ;
+	rdfs:comment "The user's last name. No `access_token` required.  `string`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :last_name .
+user:link a rdf:Property ;
+	rdfs:label "link" ;
+	rdfs:comment "The URL of the profile for the user on Facebook. No `access_token` required. `string` containing a valid URL." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :link .
+user:username a rdf:Property ;
+	rdfs:label "username" ;
+	rdfs:comment "The user's Facebook username. No `access_token` required. `string`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :username .
+user:about a rdf:Property ;
+	rdfs:label "about" ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :about .
+user:birthday a rdf:Property ;
+	rdfs:label "birthday" ;
+	rdfs:comment "The user's birthday. `user_birthday` or `friends_birthday`. Date `string` in `MM/DD/YYYY` format." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :birthday .
+user:hometown a rdf:Property ;
+	rdfs:label "hometown" ;
+	rdfs:comment "The user's hometown. `user_hometown` or `friends_hometown`. object containing `name` and `id`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :hometown .
+user:location a rdf:Property ;
+	rdfs:label "location" ;
+	rdfs:comment "The user's current city. `user_location` or `friends_location`.  object containing `name` and `id`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :location .
+user:address a rdf:Property ;
+	rdfs:label "address" ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :address .
+user:mobile_phone a rdf:Property ;
+	rdfs:label "mobile_phone" ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :mobile_phone .
+user:bio a rdf:Property ;
+	rdfs:label "bio" ;
+	rdfs:comment "The user's biography. `user_about_me` or `friends_about_me`. `string`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :bio .
+user:quotes a rdf:Property ;
+	rdfs:label "quotes" ;
+	rdfs:comment "The user's favorite quotes. `user_about_me` or `friends_about_me`. `string`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :quotes .
+user:work a rdf:Property ;
+	rdfs:label "work" ;
+	rdfs:comment "A list of the user's work history. `user_work_history` or `friends_work_history`. `array` of objects containing `employer`, `location`, `position`, `start_date` and `end_date` fields." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :work .
+user:sports a rdf:Property ;
+	rdfs:label "sports" ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :sports .
+user:favorite_teams a rdf:Property ;
+	rdfs:label "favorite_teams" ;
+	rdfs:comment "The user's favorite teams; this field is deprecated and will be removed in the near future. `user_likes` or `friends_likes`. `array` of objects containing `id` and `name` fields." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :favorite_teams .
+user:favorite_athletes a rdf:Property ;
+	rdfs:label "favorite_athletes" ;
+	rdfs:comment "The user's favorite athletes; this field is deprecated and will be removed in the near future.  `user_likes` or `friends_likes` . `array` of objects containing `id` and `name` fields." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :favorite_athletes .
+user:inspirational_people a rdf:Property ;
+	rdfs:label "inspirational_people" ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :inspirational_people .
+user:education a rdf:Property ;
+	rdfs:label "education" ;
+	rdfs:comment "A list of the user's education history. `user_education_history` or `friends_education_history`. `array` of objects containing `year` and `type` fields, and `school` object (`name`,  `id`, `type`, and optional `year`, `degree`, `concentration` array, `classes` array, and `with` array )." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :education .
+user:gender a rdf:Property ;
+	rdfs:label "gender" ;
+	rdfs:comment "The user's gender: `female` or `male`.  No `access_token` required. `string`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :gender .
+user:interested_in a rdf:Property ;
+	rdfs:label "interested_in" ;
+	rdfs:comment "The genders the user is interested in. `user_relationship_details` or `friends_relationship_details`. `array` containing strings." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :interested_in .
+user:meeting_for a rdf:Property ;
+	rdfs:label "meeting_for" ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :meeting_for .
+user:relationship_status a rdf:Property ;
+	rdfs:label "relationship_status" ;
+	rdfs:comment "The user's relationship status: `Single`, `In a relationship`, `Engaged`, `Married`, `It's complicated`, `In an open relationship`, `Widowed`, `Separated`, `Divorced`, `In a civil union`, `In a domestic partnership`. `user_relationships` or `friends_relationships`. `string`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :relationship_status .
+user:significant_other a rdf:Property ;
+	rdfs:label "significant_other" ;
+	rdfs:comment "The user's significant other. `user_relationships` or `friends_relationships`.  object containing `name` and `id`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :significant_other .
+user:religion a rdf:Property ;
+	rdfs:label "religion" ;
+	rdfs:comment "The user's religion. `user_religion_politics` or `friends_religion_politics` . `string`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :religion .
+user:political a rdf:Property ;
+	rdfs:label "political" ;
+	rdfs:comment "The user's political view. `user_religion_politics` or `friends_religion_politics`. `string`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :political .
+user:email a rdf:Property ;
+	rdfs:label "email" ;
+	rdfs:comment "The proxied or contact email address granted by the user. `email`. `string` containing a valid RFC822 email address." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :email .
+user:website a rdf:Property ;
+	rdfs:label "website" ;
+	rdfs:comment "The URL of the user's personal website. `user_website` or `friends_website` . `string` containing a valid URL." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :website .
+user:timezone a rdf:Property ;
+	rdfs:label "timezone" ;
+	rdfs:comment "The user's timezone offset from UTC. Available only for the current user.  `number`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :timezone .
+user:locale a rdf:Property ;
+	rdfs:label "locale" ;
+	rdfs:comment "The user's locale. No `access_token` required. `string` containing the ISO Language Code and ISO Country Code." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :locale .
+user:languages a rdf:Property ;
+	rdfs:label "languages" ;
+	rdfs:comment "The user's languages. `user_likes`. `array` of objects containing language `id` and `name`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :languages .
+user:verified a rdf:Property ;
+	rdfs:label "verified" ;
+	rdfs:comment "The user's account verification status, either `true` or `false` (see below). Requires `access_token`.  `boolean`." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :verified .
+user:trust a rdf:Property ;
+	rdfs:label "trust" ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :trust .
+user:is_employee a rdf:Property ;
+	rdfs:label "is_employee" ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :is_employee .
+user:updated_time a owl:DatatypeProperty ;
+	rdfs:label "updated_time" ;
+	rdfs:comment "The last time the user's profile was updated; changes to the `languages`, `link`, `timezone`, `verified`, `interested_in`, `favorite_athletes`, `favorite_teams`, and `video_upload_limits` are not not reflected in this value. Requires `access_token`. `string` containing an ISO-8601 datetime." ;
+	rdfs:domain user:type ;
+	rdfs:range xsd:dateTime ;
+	rdfs:subPropertyOf :updated_time .
+user:installed a rdf:Property ;
+	rdfs:label "installed" ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :installed .
+user:video_upload_limits a rdf:Property ;
+	rdfs:label "video_upload_limits" ;
+	rdfs:comment "The size of the video file and the length of the video that a user can upload; only returned if specifically requested via the `fields` URL parameter. Requires `access_token`.  object containing `length` and `size` of video." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :video_upload_limits .
+user:home a owl:ObjectProperty ;
+	rdfs:label "home" ;
+	rdfs:comment "The user's news feed." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :home .
+user:feed a owl:ObjectProperty ;
+	rdfs:label "feed" ;
+	rdfs:comment "The user's wall." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :feed .
+user:friends a owl:ObjectProperty ;
+	rdfs:label "friends" ;
+	rdfs:comment "The user's friends." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :friends .
+user:mutualfriends a owl:ObjectProperty ;
+	rdfs:label "mutualfriends" ;
+	rdfs:comment "The mutual friends between two users." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :mutualfriends .
+user:family a owl:ObjectProperty ;
+	rdfs:label "family" ;
+	rdfs:comment "The user's family relationships" ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :family .
+user:payments a owl:ObjectProperty ;
+	rdfs:label "payments" ;
+	rdfs:comment "The Facebook Credits orders the user placed with an application. See the [Credits API](/docs/creditsapi) for more information." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :payments .
+user:activities a owl:ObjectProperty ;
+	rdfs:label "activities" ;
+	rdfs:comment "The activities listed on the user's profile." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :activities .
+user:interests a owl:ObjectProperty ;
+	rdfs:label "interests" ;
+	rdfs:comment "The interests listed on the user's profile." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :interests .
+user:music a owl:ObjectProperty ;
+	rdfs:label "music" ;
+	rdfs:comment "The music listed on the user's profile." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :music .
+user:books a owl:ObjectProperty ;
+	rdfs:label "books" ;
+	rdfs:comment "The books listed on the user's profile." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :books .
+user:movies a owl:ObjectProperty ;
+	rdfs:label "movies" ;
+	rdfs:comment "The movies listed on the user's profile." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :movies .
+user:television a owl:ObjectProperty ;
+	rdfs:label "television" ;
+	rdfs:comment "The television listed on the user's profile." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :television .
+user:games a owl:ObjectProperty ;
+	rdfs:label "games" ;
+	rdfs:comment "Games the user has added to the Arts and Entertainment section of their profile." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :games .
+user:adaccounts a owl:ObjectProperty ;
+	rdfs:label "adaccounts" ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :adaccounts .
+user:likes a owl:ObjectProperty ;
+	rdfs:label "likes" ;
+	rdfs:comment "All the pages this user has liked." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :likes .
+user:posts a owl:ObjectProperty ;
+	rdfs:label "posts" ;
+	rdfs:comment "The user's own posts." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :posts .
+user:tagged a owl:ObjectProperty ;
+	rdfs:label "tagged" ;
+	rdfs:comment "Posts the user is tagged in." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :tagged .
+user:statuses a owl:ObjectProperty ;
+	rdfs:label "statuses" ;
+	rdfs:comment "The user's status updates." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :statuses .
+user:links a owl:ObjectProperty ;
+	rdfs:label "links" ;
+	rdfs:comment "The user's posted links." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :links .
+user:notes a owl:ObjectProperty ;
+	rdfs:label "notes" ;
+	rdfs:comment "The user's notes." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :notes .
+user:photos a owl:ObjectProperty ;
+	rdfs:label "photos" ;
+	rdfs:comment "Photos the user (or friend) is tagged in." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :photos .
+user:cover a owl:ObjectProperty ;
+	rdfs:label "cover" ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :cover .
+user:albums a owl:ObjectProperty ;
+	rdfs:label "albums" ;
+	rdfs:comment "The photo albums this user has created." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :albums .
+user:events a owl:ObjectProperty ;
+	rdfs:label "events" ;
+	rdfs:comment "The events this user is attending." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :events .
+user:groups a owl:ObjectProperty ;
+	rdfs:label "groups" ;
+	rdfs:comment "The Groups that the user belongs to." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :groups .
+user:videos a owl:ObjectProperty ;
+	rdfs:label "videos" ;
+	rdfs:comment "The videos this user has been tagged in." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :videos .
+user:picture a owl:ObjectProperty ;
+	rdfs:label "picture" ;
+	rdfs:comment "The user's profile picture." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :picture .
+user:inbox a owl:ObjectProperty ;
+	rdfs:label "inbox" ;
+	rdfs:comment "The [Threads](/docs/reference/api/thread/) in this user's inbox." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :inbox .
+user:outbox a owl:ObjectProperty ;
+	rdfs:label "outbox" ;
+	rdfs:comment "The messages in this user's outbox." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :outbox .
+user:updates a owl:ObjectProperty ;
+	rdfs:label "updates" ;
+	rdfs:comment "The updates in this user's inbox." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :updates .
+user:accounts a owl:ObjectProperty ;
+	rdfs:label "accounts" ;
+	rdfs:comment "The Facebook apps and pages owned by the current user." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :accounts .
+user:checkins a owl:ObjectProperty ;
+	rdfs:label "checkins" ;
+	rdfs:comment "The places that the user has checked-into." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :checkins .
+user:apprequests a owl:ObjectProperty ;
+	rdfs:label "apprequests" ;
+	rdfs:comment "The user's outstanding requests from an app." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :apprequests .
+user:friendlists a owl:ObjectProperty ;
+	rdfs:label "friendlists" ;
+	rdfs:comment "The user's friend lists." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :friendlists .
+user:friendrequests a owl:ObjectProperty ;
+	rdfs:label "friendrequests" ;
+	rdfs:comment "The user's incoming friend requests." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :friendrequests .
+user:permissions a owl:ObjectProperty ;
+	rdfs:label "permissions" ;
+	rdfs:comment "The permissions that user has granted the application." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :permissions .
+user:notifications a owl:ObjectProperty ;
+	rdfs:label "notifications" ;
+	rdfs:comment "The notifications for the user." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :notifications .
+user:scores a owl:ObjectProperty ;
+	rdfs:label "scores" ;
+	rdfs:comment "The current [scores](/docs/score/) for the user in games." ;
+	rdfs:domain user:type ;
+	rdfs:subPropertyOf :scores .
