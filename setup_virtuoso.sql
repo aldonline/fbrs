@@ -33,7 +33,7 @@ create procedure fbrs_reload_graph( in path_to_ttl varchar, in graph_uri varchar
 };
 
 
-create procedure fbrs_add_missing_relation( in graph_uri varchar ) returns varchar {
+create procedure fbrs_add_missing_relation( in graph_uri varchar ) returns void {
   declare rel_name varchar;
   declare user_id varchar;
   declare re varchar;
@@ -44,6 +44,7 @@ create procedure fbrs_add_missing_relation( in graph_uri varchar ) returns varch
     sparql_eval( 'modify <' || graph_uri || '> delete {} insert { <https://graph.facebook.com/' || user_id || '#> fbx:' || rel_name || ' ?bnode } where { ?bnode api:has ?item } limit 1 ', null, 10 );
   };
 };
+
 
 
 create procedure fbrs_queue_document( in local_name varchar ) returns void

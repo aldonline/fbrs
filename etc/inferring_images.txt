@@ -1,0 +1,82 @@
+The same URL pattern works for all objects in the graph:
+
+People: http://graph.facebook.com/aldo.bucchi/picture
+Events: http://graph.facebook.com/331218348435/picture
+Groups: http://graph.facebook.com/69048030774/picture
+Pages: http://graph.facebook.com/DoloresPark/picture
+Applications: http://graph.facebook.com/2318966938/picture
+Photo Albums: http://graph.facebook.com/platform/picture
+
+You can specify the picture size you want with the type argument, which should be one of 
+square (50x50),
+small (50 pixels wide, variable height),
+normal (100 pixels wide, variable height), 
+and large (about 200 pixels wide, variable height):
+
+http://graph.facebook.com/aldo.bucchi/picture?type=large.
+
+If you need a picture to be returned over a secure connection, you can set the return_ssl_resources argument to 1: http://graph.facebook.com/aldo.bucchi/picture?return_ssl_resources=1.
+
+
+
+create procedure ephemeral( in graph_uri varchar ) {
+  for ( sparql select distinct ?id where { { ?s user:id ?id } union { ?s page:id ?id } } ) do {
+    dbg_obj_print( id );
+    declare query varchar;
+    query := '
+      insert into <' || graph_uri || '> 
+      data {
+        <https://graph.facebook.com/' || id || '#> 
+          fbx:image_square <http://graph.facebook.com/' || id || '/picture?type=square>
+          .
+        }
+     ';
+    -- dbg_obj_print( query );
+  }
+};
+ephemeral( '' );
+
+
+
+
+create procedure epmeheral2( in graph_uri varchar ){
+    declare stat, msg varchar;
+    declare mdata, rset any;
+    exec (
+      'sparql select distinct ?id from <' || graph_uri || '> where { { ?s user:id ?id } union { ?s page:id ?id } }',
+      stat, msg,
+      vector ( graph_uri ),
+      100000,
+      mdata,
+      rset
+     );
+    
+    
+     
+     
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+modify <https://graph.facebook.com/207923>
+delete {}
+insert {
+  
+} where {
+  { ?s user:id ?id } union { ?s page:id ?id }
+}
+
+
+select distinct ?id from <https://graph.facebook.com/207923> where { { ?s user:id ?id } union { ?s page:id ?id } }

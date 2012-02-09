@@ -31,6 +31,8 @@ exports.fetch = fetch = ( opts, cb ) ->
     return cb err if err?
     console.log 'fetched ' + opts.local_name + ' --> ' + path
     o.isql_client.exec "fbrs_reload_graph('#{path}', '#{url}')", ( err, res ) ->
+      # TODO: run client side inference rules
+      
       console.log 'inserted ' + opts.local_name
       cb?()
 
