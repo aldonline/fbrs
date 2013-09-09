@@ -1,5 +1,3 @@
-CONFIENTIAL: PART OF THE E8 PROJECT
-
 # FBRS = Facebook RDF Sync
 
 Facebook's Graph API can return (almost) proper Linked Data when asked to in a polite manner. ( Accept: text/turtle ).
